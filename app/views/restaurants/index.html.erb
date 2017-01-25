@@ -5,23 +5,38 @@
                 <div class="input-group">
                     <%= text_field_tag(:query) %>
                 </div>
+                <%= select_tag(:filter, "<option>Todos</option><option>Zona</option><option>Restaurante</option><option>Especialidad</option>".html_safe,{class: 'form-control'}) %>
                 <%= submit_tag("Search") %>
             <% end %>
         </div>
     </div>
     <div class="restaurants">
-        <% @zones.each do |zone| %>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="<%= zone.restaurant.img_url %>" alt="...">
-                    <div class="caption">
-                        <h4><%= zone.restaurant.name %></h4>
-                        <h5><%= "Especialidad: #{zone.restaurant.specialty}" %></h5>
-                        <h5><%= "Teléfono: #{zone.phone}" %></h5>
-                        <h5><%= "Direccíon: #{zone.address}" %></h5>
+        <% if @zones.length > 0 %>
+            <% @zones.each do |zone| %>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="<%= zone.restaurant.img_url %>" alt="...">
+                        <div class="caption">
+                            <h4><%= zone.restaurant.name %></h4>
+                            <h5><%= "Especialidad: #{zone.restaurant.specialty}" %></h5>
+                            <h5><%= "Teléfono: #{zone.phone}" %></h5>
+                            <h5><%= "Direccíon: #{zone.address}" %></h5>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <% end %>
+        <% else %>
+            <% @restaurants.each do |restaurant| %>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="<%= restaurant.img_url %>" alt="...">
+                        <div class="caption">
+                            <h4><%= restaurant.name %></h4>
+                            <h5><%= "Especialidad: #{restaurant.specialty}" %></h5>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         <% end %>
     </div>
 </div>

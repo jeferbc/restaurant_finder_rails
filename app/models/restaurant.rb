@@ -12,4 +12,8 @@
 
 class Restaurant < ApplicationRecord
     has_many :zones
+
+    include PgSearch
+    pg_search_scope :search_restaurant_name, against: [:name]
+    pg_search_scope :search_restaurant_specialty, against: [:specialty]
 end

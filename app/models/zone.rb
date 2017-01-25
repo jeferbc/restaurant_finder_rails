@@ -17,5 +17,5 @@ class Zone < ApplicationRecord
   belongs_to :restaurant
 
   include PgSearch
-  pg_search_scope :search, against: [:restaurant_id, :address]
+  pg_search_scope :search_zone, against: [:restaurant_id, :address]
 end

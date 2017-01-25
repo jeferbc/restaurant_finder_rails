@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-sprockets
+
+$(window).load(function(){
+    var sub_domain = location.hostname.split('.');
+    if (sub_domain.length <= 2 || sub_domain[0] == 'www')
+        $('#myModal').modal('show');
+});
+$('.btn-success').submit(function(v) {
+    v.preventDefault(); // to stop the form from submitting
+    /* Validations go here */
+    $('#myModal').modal('hide');
+    this.submit(); // If all the validations succeeded
+});

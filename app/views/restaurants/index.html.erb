@@ -1,0 +1,55 @@
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-4 col-md-offset-4">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Buscar Restaurante">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <div class="restaurants">
+        <% @zones.each do |zone| %>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="<%= zone.restaurant.img_url %>" alt="...">
+                    <div class="caption">
+                        <h4><%= zone.restaurant.name %></h4>
+                        <h5><%= "Especialidad: #{zone.restaurant.specialty}" %></h5>
+                        <h5><%= "Teléfono: #{zone.phone}" %></h5>
+                        <h5><%= "Direccíon: #{zone.address}" %></h5>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Elige Ciudad</h4>
+            </div>
+            <%= form_tag(get_city_path, method: "get") do %>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <%= label_tag "ciudad" %>
+                                <%= select_tag(:city_id, options_from_collection_for_select(@cities, "id", "name"),{prompt:"Seleccione Ciudad" , class: 'form-control'}) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <%= submit_tag "Entrar", class: 'btn btn-success' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

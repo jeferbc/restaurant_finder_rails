@@ -12,5 +12,4 @@
 class Zone < ApplicationRecord
     has_many :locals
     belongs_to :city
-
 end

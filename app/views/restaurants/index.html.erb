@@ -13,17 +13,20 @@
     <div class="restaurants">
         <% if @zones.length > 0 %>
             <% @zones.each do |zone| %>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="<%= zone.restaurant.img_url %>" alt="...">
-                        <div class="caption">
-                            <h4><%= zone.restaurant.name %></h4>
-                            <h5><%= "Especialidad: #{zone.restaurant.specialty}" %></h5>
-                            <h5><%= "Teléfono: #{zone.phone}" %></h5>
-                            <h5><%= "Direccíon: #{zone.address}" %></h5>
+                <% zone.locals.each do |local| %>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img src="<%= local.restaurant.img_url %>" alt="...">
+                            <div class="caption">
+                                <h4><%= local.restaurant.name %></h4>
+                                <h5><%= "Especialidad: #{local.restaurant.specialty}" %></h5>
+                                <h5><%= "Teléfono: #{local.phone}" %></h5>
+                                <h5><%= "Direccíon: #{local.address}" %></h5>
+                                <h5><%= "Horario: #{local.schedule}" %></h5>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <% end %>
             <% end %>
         <% else %>
             <% @restaurants.each do |restaurant| %>

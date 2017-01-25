@@ -2,8 +2,8 @@ class RestaurantsController < ApplicationController
     def index
         @cities = City.all
         city = City.find_by(name: request.subdomain.humanize)
-        if (request.subdomain != "" && request.subdomain != 'www')
-            @zones = Zone.where(city_id: city.id)
+        if (request.subdomain != "" && request.subdomain != 'www'&& params[:query].present?)
+            @zones = Zone.search(params[:query]).where(city_id: city.id)
         else
             @zones = []
         end

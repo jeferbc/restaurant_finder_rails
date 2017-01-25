@@ -1,0 +1,15 @@
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.2/ext/debug_inspector
+/usr/bin/ruby2.3 -r ./siteconf20170124-22232-16w23da.rb extconf.rb 
+creating Makefile
+
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.2/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.2/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/debug_inspector-0.0.2/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.so ./.gem.20170124-22232-rhqb1a

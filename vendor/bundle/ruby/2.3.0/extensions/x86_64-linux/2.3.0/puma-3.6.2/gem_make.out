@@ -1,0 +1,25 @@
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/puma-3.6.2/ext/puma_http11
+/usr/bin/ruby2.3 -r ./siteconf20170124-22232-1bya1ip.rb extconf.rb 
+checking for BIO_read() in -lcrypto... yes
+checking for SSL_CTX_new() in -lssl... yes
+checking for openssl/bio.h... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/extensions/x86_64-linux/2.3.0/puma-3.6.2/mkmf.log
+
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/puma-3.6.2/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/puma-3.6.2/ext/puma_http11
+make "DESTDIR="
+compiling http11_parser.c
+compiling io_buffer.c
+compiling mini_ssl.c
+compiling puma_http11.c
+linking shared-object puma/puma_http11.so
+
+current directory: /home/jeferbc/FullStack/rails/search/vendor/bundle/ruby/2.3.0/gems/puma-3.6.2/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20170124-22232-1id1qr6/puma

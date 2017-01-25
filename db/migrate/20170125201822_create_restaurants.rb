@@ -3,7 +3,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.0]
     create_table :restaurants do |t|
       t.string :name
       t.string :img_url
-      t.string :specialty
+      t.references :specialty, foreign_key: true
 
       t.timestamps
     end

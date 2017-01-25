@@ -2,28 +2,19 @@
 #
 # Table name: zones
 #
-#  id            :integer          not null, primary key
-#  phone         :string
-#  address       :string
-#  schedule      :string
-#  city_id       :integer
-#  restaurant_id :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id         :integer          not null, primary key
+#  name       :string
+#  city_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  phone: MyString
-  address: MyString
-  schedule: MyString
+  name: MyString
   city: one
-  restaurant: one
 
 two:
-  phone: MyString
-  address: MyString
-  schedule: MyString
+  name: MyString
   city: two
-  restaurant: two

@@ -2,12 +2,12 @@
 #
 # Table name: restaurants
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  img_url    :string
-#  specialty  :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string
+#  img_url      :string
+#  specialty_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -15,9 +15,9 @@
 one:
   name: MyString
   img_url: MyString
-  specialty: MyString
+  specialty: one
 
 two:
   name: MyString
   img_url: MyString
-  specialty: MyString
+  specialty: two

@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: zones
+# Table name: specialties
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  city_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'test_helper'
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-class ZoneTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end
+one:
+  name: MyString
+
+two:
+  name: MyString

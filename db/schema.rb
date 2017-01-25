@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125022704) do
+ActiveRecord::Schema.define(version: 20170125202143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,26 +21,43 @@ ActiveRecord::Schema.define(version: 20170125022704) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locals", force: :cascade do |t|
+    t.string   "address"
+    t.string   "phone"
+    t.string   "schedule"
+    t.integer  "restaurant_id"
+    t.integer  "zone_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["restaurant_id"], name: "index_locals_on_restaurant_id", using: :btree
+    t.index ["zone_id"], name: "index_locals_on_zone_id", using: :btree
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "img_url"
-    t.string   "specialty"
+    t.integer  "specialty_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["specialty_id"], name: "index_restaurants_on_specialty_id", using: :btree
+  end
+
+  create_table "specialties", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "zones", force: :cascade do |t|
-    t.string   "phone"
-    t.string   "address"
-    t.string   "schedule"
+    t.string   "name"
     t.integer  "city_id"
-    t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_zones_on_city_id", using: :btree
-    t.index ["restaurant_id"], name: "index_zones_on_restaurant_id", using: :btree
   end
 
+  add_foreign_key "locals", "restaurants"
+  add_foreign_key "locals", "zones"
+  add_foreign_key "restaurants", "specialties"
   add_foreign_key "zones", "cities"
-  add_foreign_key "zones", "restaurants"
 end

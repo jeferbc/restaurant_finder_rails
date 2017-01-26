@@ -3,69 +3,28 @@
         <div class="col-md-4 col-md-offset-4">
             <%= form_tag(root_path, method: "get") do %>
                 <div class="input-group">
-                    <%= select_tag(:filter, "<option>Todos</option><option>Zona</option><option>Restaurante</option><option>Especialidad</option>".html_safe,{class: 'form-control list'}) %>
                     <%= text_field_tag(:query, nil, {class: 'form-control', placeholder: "Buscar Restaurante"}) %>
-                    <%= select_tag(:zones, options_from_collection_for_select(@zones_city, "id", "name"),{prompt:"Seleccione Zona" , class: 'form-control'}) %>
+                    <%= select_tag(:zones, options_from_collection_for_select(@zones, "id", "name"),{prompt:"Seleccione Zona" , class: 'form-control'}) %>
+                    <%= select_tag(:specialties, options_from_collection_for_select(@specialties, "id", "name"),{prompt:"Seleccione Especialidad" , class: 'form-control'}) %>
                     <%= submit_tag("Search", class: "btn btn-default") %>
                 </div>
             <% end %>
         </div>
     </div>
     <div class="restaurants">
-        <% if @zones.length > 0 %>
-            <% @zones.each do |zone| %>
-                <% zone.locals.each do |local| %>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="<%= local.restaurant.img_url %>" alt="...">
-                            <div class="caption">
-                                <h4><%= local.restaurant.name %></h4>
-                                <h5><%= "Especialidad: #{local.restaurant.specialty}" %></h5>
-                                <h5><%= "Teléfono: #{local.phone}" %></h5>
-                                <h5><%= "Direccíon: #{local.address}" %></h5>
-                                <h5><%= "Horario: #{local.schedule}" %></h5>
-                            </div>
-                        </div>
-                    </div>
-                <% end %>
-            <% end %>
-        <% else %>
-            <% @restaurants.each do |restaurant| %>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="<%= restaurant.img_url %>" alt="...">
-                        <div class="caption">
-                            <h4><%= restaurant.name %></h4>
-                            <h5><%= "Especialidad: #{restaurant.specialty}" %></h5>
-                        </div>
+        <% @locals.each do |local| %>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="<%= local.restaurant.img_url %>" alt="...">
+                    <div class="caption">
+                        <h4><%= local.restaurant.name %></h4>
+                        <h5><%= "Especialidad: #{local.restaurant.specialty}" %></h5>
+                        <h5><%= "Teléfono: #{local.phone}" %></h5>
+                        <h5><%= "Direccíon: #{local.address}" %></h5>
+                        <h5><%= "Horario: #{local.schedule}" %></h5>
                     </div>
                 </div>
-            <% end %>
-        <% end %>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Elige Ciudad</h4>
             </div>
-            <%= form_tag(get_city_path, method: "get") do %>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <%= label_tag "ciudad" %>
-                                <%= select_tag(:city_id, options_from_collection_for_select(@cities, "id", "name"),{prompt:"Seleccione Ciudad" , class: 'form-control'}) %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <%= submit_tag "Entrar", class: 'btn btn-success' %>
-                </div>
-            <% end %>
-        </div>
+        <% end %>
     </div>
 </div>

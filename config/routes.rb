@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'restaurants/index'
-
+    get 'choose_city' => 'city#choose_city'
+    get 'restaurants/index'
     get 'index' => 'restaurants#index'
-    get 'get_city' => 'restaurants#get_city'
+    get 'get_city' => 'city#get_city'
     match '/', to: 'restaurants#index', constraints: { subdomain: 'www' }, via: [:get, :post, :put, :patch, :delete]
     match '/', to: 'restaurants#index', constraints: { subdomain: "/.+/" }, via: [:get, :post, :put, :patch, :delete]
     root 'restaurants#index'

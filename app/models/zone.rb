@@ -12,7 +12,4 @@
 class Zone < ApplicationRecord
     has_many :locals
     belongs_to :city
-
-    include PgSearch
-    pg_search_scope :search_zone, against: [:id]
 end

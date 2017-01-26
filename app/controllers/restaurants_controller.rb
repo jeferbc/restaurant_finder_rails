@@ -1,58 +1,16 @@
 class RestaurantsController < ApplicationController
+before_action :require_city
 
     def index
-        @cities = City.all
-        city = City.find_by(name: request.subdomain.humanize)
-        if (request.subdomain != "" && request.subdomain != 'www' && (params[:query].present? || params[:filter].present?))
-            if (params[:filter] == "Todos")
-                @zones = zone_city.where(city_id: city.id)
-            elsif (params[:filter] == "Zona")
-                zone_city = Zone.joins(:city)
-                @zones = zone_city.search_zone(params[:zones]).where(city_id: city.id)
-                @zones_city = Zone.where(city_id: city.id)
-            elsif (params[:filter] == "Restaurante")
-                local_restaurant = Local.joins(:restaurant)
-                @restaurants = local_restaurant.search_restaurant(params[:query])
-                @zones = []
-            else
-                @restaurants = Restaurant.search_restaurant_specialty(params[:query])
-                @zones = []
-            end
-        elsif(request.subdomain != "" && request.subdomain != 'www')
-            @zones_city = Zone.where(city_id: city.id)
-            @zones = []
-            @restaurants = []
-            byebug
-        else
-            @zones = []
-            @restaurants = []
-            @zones_city = @zones
-        end
-        # if (request.subdomain != "" && request.subdomain != 'www' && (params[:query].present? || params[:filter].present?))
-        #     if (params[:filter] == "Todos")
-        #         @zones = Zone.where(city_id: city.id)
-        #     elsif (params[:filter] == "Zona")
-        #         @zones = Zone.search_zone(params[:query]).where(city_id: city.id)
-        #     elsif (params[:filter] == "Restaurante")
-        #         @restaurants = Restaurant.search_restaurant_name(params[:query])
-        #         @zones = []
-        #     else
-        #         @restaurants = Restaurant.search_restaurant_specialty(params[:query])
-        #         @zones = []
-        #     end
-        # else
-        #     @zones = []
-        #     @restaurants = []
-        # end
-    end
-
-    def get_city
-        id = params[:city_id]
-        if id
-            redirect_to root_url(subdomain: City.find(id).name)
-        else
-            flash[:danger] = "An error occured. Please try again"
-            redirect_to root_path
+        @zones = current_city.zones
+        @locals = Local.joins(:zone).joins(:restaurant).where('zones.city_id = ?', current_city.id)
+        @specialties = get_specialties(@locals).sort! { |a,b| a.name.downcase <=> b.name.downcase }
+        if params[:query].present? && params[:query].length > 0
+            @locals = @locals.where('restaurants.name ILIKE ?', "%#{params[:query]}%")
+        elsif params[:zones].present? && params[:zones].length > 0
+            @locals = @locals.where(zone_id: params[:zones])
+        elsif params[:specialties].present? && params[:specialties].length > 0
+            @locals = @locals.where('restaurants.specialty_id = ?', params[:specialties])
         end
     end
 end

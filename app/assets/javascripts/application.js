@@ -20,22 +20,6 @@ $(window).load(function(){
     var sub_domain = location.hostname.split('.');
     if (sub_domain.length <= 2 || sub_domain[0] == 'www')
         $('#myModal').modal('show');
-
-    $("#query").hide();
-    $("#zones").hide();
-
-    $( "#filter" ).change(function() {
-        var filter = $(this).val();
-        if(filter == "Zona"){
-            $("#query").hide();
-            $("#zones").show();
-        }
-        else{
-            $("#zones").hide();
-            $("#query").show();
-        }
-    });
-
 });
 $('.btn-success').submit(function(v) {
     v.preventDefault(); // to stop the form from submitting

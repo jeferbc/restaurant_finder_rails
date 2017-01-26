@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
             elsif (params[:filter] == "Zona")
                 zone_city = Zone.joins(:city)
                 @zones = zone_city.search_zone(params[:zones]).where(city_id: city.id)
+                @zones_city = Zone.where(city_id: city.id)
             elsif (params[:filter] == "Restaurante")
                 local_restaurant = Local.joins(:restaurant)
                 @restaurants = local_restaurant.search_restaurant(params[:query])
@@ -17,10 +18,15 @@ class RestaurantsController < ApplicationController
                 @restaurants = Restaurant.search_restaurant_specialty(params[:query])
                 @zones = []
             end
-        else
-            zone_city = Zone.joins(:city)
-            @zones = zone_city.where(city_id: city.id)
+        elsif(request.subdomain != "" && request.subdomain != 'www')
+            @zones_city = Zone.where(city_id: city.id)
+            @zones = []
             @restaurants = []
+            byebug
+        else
+            @zones = []
+            @restaurants = []
+            @zones_city = @zones
         end
         # if (request.subdomain != "" && request.subdomain != 'www' && (params[:query].present? || params[:filter].present?))
         #     if (params[:filter] == "Todos")

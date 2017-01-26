@@ -5,7 +5,7 @@
                 <div class="input-group">
                     <%= select_tag(:filter, "<option>Todos</option><option>Zona</option><option>Restaurante</option><option>Especialidad</option>".html_safe,{class: 'form-control list'}) %>
                     <%= text_field_tag(:query, nil, {class: 'form-control', placeholder: "Buscar Restaurante"}) %>
-                    <%= select_tag(:zones, options_from_collection_for_select(@zones, "id", "name"),{prompt:"Seleccione Zona" , class: 'form-control'}) %>
+                    <%= select_tag(:zones, options_from_collection_for_select(@zones_city, "id", "name"),{prompt:"Seleccione Zona" , class: 'form-control'}) %>
                     <%= submit_tag("Search", class: "btn btn-default") %>
                 </div>
             <% end %>

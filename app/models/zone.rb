@@ -14,5 +14,5 @@ class Zone < ApplicationRecord
     belongs_to :city
 
     include PgSearch
-    pg_search_scope :search_zone, against: [:name]
+    pg_search_scope :search_zone, against: [:id]
 end

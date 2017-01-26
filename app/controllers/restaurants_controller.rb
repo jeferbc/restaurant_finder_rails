@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
 before_action :require_city
 
     def index
-        @zones = current_city.zones
+        @zones = current_city.zones.sort { |a,b| a.name.downcase <=> b.name.downcase }
         @locals = Local.joins(:zone).joins(:restaurant).where('zones.city_id = ?', current_city.id)
         @specialties = get_specialties(@locals).sort! { |a,b| a.name.downcase <=> b.name.downcase }
         if params[:query].present? && params[:query].length > 0

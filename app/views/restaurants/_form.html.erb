@@ -1,0 +1,14 @@
+<div class="col-md-4">
+    <%= form_tag(root_path, method: "get") do %>
+    <div class="input-group">
+        <% if action == "zone" %>
+            <%= select_tag(:zones, options_from_collection_for_select(@zones, "id", "name"),{prompt:"Seleccione Zona" , class: 'form-control'}) %>
+        <% elsif action == "restaurant"%>
+             <%= text_field_tag(:query, nil, {class: 'form-control', placeholder: "Buscar Restaurante"}) %>
+        <% else %>
+            <%= select_tag(:specialties, options_from_collection_for_select(@specialties, "id", "name"),{prompt:"Seleccione Especialidad" , class: 'form-control'}) %>
+        <% end %>
+        <%= submit_tag("Search", class: "btn btn-default") %>
+    </div>
+    <% end %>
+</div>

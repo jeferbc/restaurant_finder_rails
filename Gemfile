@@ -29,7 +29,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'hirb'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'pg_search'
 gem 'faker'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -52,6 +51,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+end
+
+group :production do
+    # para usar ver los logs en production en consola
+    gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

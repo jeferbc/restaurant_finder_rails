@@ -13,7 +13,4 @@
 class Restaurant < ApplicationRecord
     has_many :locals
     belongs_to :specialty
-
-    include PgSearch
-    pg_search_scope :search_restaurant, against: [:name]
 end

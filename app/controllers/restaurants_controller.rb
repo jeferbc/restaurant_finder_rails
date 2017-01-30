@@ -8,13 +8,10 @@ before_action :require_city
         @restaurants = []
         if params[:query].present?
             @restaurants = Restaurant.where("restaurants.name ILIKE ?", "%#{params[:query]}%").joins({locals: :zone}).where("city_id= ?" , current_city).uniq
-            @cities = []
         elsif params[:zones].present?
             @restaurants = Restaurant.joins({locals: :zone}).where("city_id= ? and zone_id = ?" , current_city, params[:zones]).uniq
-            @cities = []
         elsif params[:specialties].present?
             @restaurants = Restaurant.where('specialty_id = ?', params[:specialties]).joins({locals: :zone}).where("city_id= ?", current_city).uniq
-            @cities = []
         end
     end
 end

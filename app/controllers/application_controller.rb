@@ -10,12 +10,4 @@ class ApplicationController < ActionController::Base
     def current_city
         City.find_by(name: request.subdomain.humanize)
     end
-
-    def get_specialties(locals)
-        specialties = []
-        locals.each do |n|
-            specialties << n.restaurant.specialty
-        end
-        specialties.uniq
-    end
 end

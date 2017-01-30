@@ -1,22 +1,83 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
- .forms{
-     display: flex;
-     margin-bottom: 30px;
- }
+.forms{
+    margin-bottom: 30px;
+}
+.restaurants{
+    width: 100%;
+    flex-direction: column;
+    display: -webkit-flex;
+    display: flex;
+    margin-top: 20px;
+}
+.jumbotron {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    display: inline-block;
+}
+@media screen and (min-width: 768px){
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+}
+
+.content{
+    width: 100%;
+    margin-top: 0px;
+}
+.content h4{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 0.7;
+}
+
+.jumbotron h2{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.content h3{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.image{
+    display: flex;
+    width: 40%;
+    height: 150px;
+
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+.navbar {
+    margin-bottom: 10px;
+}
+.locals{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: initial;
+    width: 100%;
+}
+.restaurant{
+    display: block;
+    margin: 10px;
+    width: 30%;
+}

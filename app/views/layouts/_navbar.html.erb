@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to "Cambiar Ciudad: #{request.subdomain.humanize}", root_path, class:"navbar-brand" %></li>
+                <li><%= link_to "Cambiar Ciudad: #{request.subdomain.humanize}", root_url(:host => request.domain), class:"navbar-brand" %></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

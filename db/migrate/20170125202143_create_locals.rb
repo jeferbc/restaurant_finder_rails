@@ -1,7 +1,6 @@
 class CreateLocals < ActiveRecord::Migration[5.0]
   def change
     create_table :locals do |t|
-      t.string :address
       t.string :phone
       t.string :schedule
       t.references :restaurant, foreign_key: true

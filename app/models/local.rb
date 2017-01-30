@@ -3,7 +3,6 @@
 # Table name: locals
 #
 #  id            :integer          not null, primary key
-#  address       :string
 #  phone         :string
 #  schedule      :string
 #  restaurant_id :integer

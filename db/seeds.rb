@@ -9,10 +9,6 @@ City.create(name: "Medellin")
 City.create(name: "Bogota")
 City.create(name: "Cali")
 City.create(name: "Bucaramanga")
-City.create(name: "Cartagena")
-City.create(name: "Manizales")
-City.create(name: "Barranquilla")
-City.create(name: "Pereira")
 Faker::Config.locale = :es
 
 20.times do |n|
@@ -21,12 +17,14 @@ end
 # 100.times do |n|
 #     Zone.create(phone: Faker::PhoneNumber.phone_number, address: Faker::Address.street_address, schedule: "Lunes - Domingo 12AM - 12PM", city_id: Faker::Number.between(1, 8))
 # end
-20.times do |n|
-    Zone.create(name: Faker::Address.state ,city_id: Faker::Number.between(1, 8))
+zones_seed = (1..4).to_a*4
+16.times do |n|
+    Zone.create(name: Faker::Address.state, address: Faker::Address.unique.street_address, city_id: zones_seed[n])
 end
-40.times do |m|
-    restaurant = Restaurant.create(name: Faker::Food.ingredient, img_url: Faker::Avatar.image, specialty_id: Faker::Number.between(1, 20))
-    Faker::Number.between(1, 10).to_i.times do |n|
-        Local.create(address: Faker::Address.street_address, phone: Faker::PhoneNumber.phone_number, schedule: "Lunes - Domingo 12AM - 12PM", restaurant_id: m+1, zone_id: Faker::Number.between(1, 20))
+16.times do |m|
+    restaurant = Restaurant.create(name: Faker::Food.ingredient, img_url: "http://fakeimg.pl/500x200/?text=World&font=lobster", specialty_id: Faker::Number.between(1, 20))
+    zones_id = (1..16).to_a.shuffle
+    Faker::Number.between(1, 8).to_i.times do |n|
+        Local.create(phone: Faker::Base.numerify('+57 (###) ### ####'), schedule: "Lunes-Domingo 9AM-9PM", restaurant_id: m+1, zone_id: zones_id[n])
     end
 end

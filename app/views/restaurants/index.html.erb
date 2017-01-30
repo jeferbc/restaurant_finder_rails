@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row ">
         <div class="col-md-12">
+            <h3 class="text-center">Buscar Por:</h3>
             <div class="forms">
                 <%= render 'form', action: 'zone' %>
                 <%= render 'form', action: 'restaurant' %>
@@ -9,18 +10,41 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">            
+        <div class="col-md-12">
             <div class="restaurants">
-                <% @locals.each do |local| %>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="<%= local.restaurant.img_url %>" alt="...">
-                        <div class="caption">
-                            <h4><%= local.restaurant.name %></h4>
-                            <h5><%= "Especialidad: #{local.restaurant.specialty}" %></h5>
-                            <h5><%= "Teléfono: #{local.phone}" %></h5>
-                            <h5><%= "Direccíon: #{local.address}" %></h5>
-                            <h5><%= "Horario: #{local.schedule}" %></h5>
+                <% @restaurants.each do |restaurant| %>
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h2 class= "text-center"><%= restaurant.name %></h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="info">
+                                    <h4><strong> Especialidad: </strong><%= restaurant.specialty.name %></h4>
+                                    <h4><strong> Ciudad(es): </strong> <%= get_cities(restaurant).uniq.join(", ") %> </h4>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="image">
+                                    <img src="<%= restaurant.img_url %>" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="text-center">Locales</h3>
+                                <div class="locals">
+                                    <% restaurant.locals.each do |local| %>
+                                        <div class="restaurant">
+                                            <%# if (local.zone.city.name == request.subdomain.humanize) %>
+                                                <h5><strong> Ciudad: </strong><%= local.zone.city.name %></h5>
+                                                <h5><strong> Teléfono: </strong><%= local.phone %></h5>
+                                                <h5> <%= "#{local.zone.address} Local: #{local.id}" %></h5>
+                                                <h5> <%= local.schedule %></h5>
+                                            <%# end %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

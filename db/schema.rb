@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20170125202143) do
   end
 
   create_table "locals", force: :cascade do |t|
-    t.string   "address"
     t.string   "phone"
     t.string   "schedule"
     t.integer  "restaurant_id"
@@ -50,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170125202143) do
 
   create_table "zones", force: :cascade do |t|
     t.string   "name"
+    t.string   "address"
     t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

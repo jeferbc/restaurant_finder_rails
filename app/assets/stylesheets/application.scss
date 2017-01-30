@@ -57,15 +57,14 @@
     margin-top: 0px;
 }
 .image{
-    display: flex;
-    width: 40%;
-    height: 150px;
-
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 .info{
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 }
 .navbar {
     margin-bottom: 10px;

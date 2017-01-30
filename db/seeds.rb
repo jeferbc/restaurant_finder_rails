@@ -22,7 +22,7 @@ zones_seed = (1..4).to_a*4
     Zone.create(name: Faker::Address.state, address: Faker::Address.unique.street_address, city_id: zones_seed[n])
 end
 16.times do |m|
-    restaurant = Restaurant.create(name: Faker::Food.ingredient, img_url: "http://fakeimg.pl/500x200/?text=World&font=lobster", specialty_id: Faker::Number.between(1, 20))
+    restaurant = Restaurant.create(name: Faker::Food.ingredient, img_url: "http://fakeimg.pl/400x200/7d848e/", specialty_id: Faker::Number.between(1, 20))
     zones_id = (1..16).to_a.shuffle
     Faker::Number.between(1, 8).to_i.times do |n|
         Local.create(phone: Faker::Base.numerify('+57 (###) ### ####'), schedule: "Lunes-Domingo 9AM-9PM", restaurant_id: m+1, zone_id: zones_id[n])

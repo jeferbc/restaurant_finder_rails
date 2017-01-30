@@ -17,13 +17,13 @@
                     <div class="jumbotron">
                         <h2 class= "text-center"><%= restaurant.name %></h2>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="info">
                                     <h4><strong> Especialidad: </strong><%= restaurant.specialty.name %></h4>
                                     <h4><strong> Ciudad(es): </strong> <%= get_cities(restaurant).uniq.join(", ") %> </h4>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="image">
                                     <img src="<%= restaurant.img_url %>" alt="...">
                                 </div>

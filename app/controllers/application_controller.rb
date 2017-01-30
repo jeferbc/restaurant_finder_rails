@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
     def require_city
-        if (request.subdomain == "" || request.subdomain == 'www')
+        unless request.subdomain != "" && request.subdomain != 'www'
             redirect_to choose_city_path
         end
     end

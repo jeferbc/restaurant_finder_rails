@@ -18,8 +18,7 @@
 
 $(window).load(function(){
     var sub_domain = location.hostname.split('.');
-    if (sub_domain.length <= 3 || sub_domain[0] == 'www')
-        alert(sub_domain[0])
+    if (sub_domain.length <= 2 || sub_domain[0] == 'www')
         $('#myModal').modal('show');
 });
 $('.btn-success').submit(function(v) {
